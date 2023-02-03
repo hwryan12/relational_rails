@@ -1,0 +1,6 @@
+<h1>Alaskan Glacier Tours Fleet</h1>
+<% @vessels.each do |vessel| %>
+    <h2><%= vessel.name %></h2>
+    <p>Year Built: <%= vessel.year_built %></p>
+    <p>Currently Running Tours: <%= vessel.operational %></p>
+<% end %>
