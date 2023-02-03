@@ -53,5 +53,19 @@ RSpec.describe "Company Index Page", type: :feature do
 
       expect(current_path).to eq("/companies")
     end
+
+    it "I see a link to take me to that Companies' Vessels page" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+      
+      visit "/companies/#{@pct.id}"
+      
+      expect(page).to have_content("Click here for this Companies Vessels")
+
+      click_on "Click here for this Companies Vessels"
+
+      expect(current_path).to eq("/companies/#{@pct.id}/vessels")
+    end
   end
 end

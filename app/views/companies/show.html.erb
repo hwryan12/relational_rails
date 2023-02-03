@@ -5,3 +5,5 @@
 <p>TripAdvisor Rank: <%= @company.tripadvisor_rank %></p>
 <p>Currently Offering Tours: <%= @company.offering_cruises %></p>
 <p>Amount of Vessels: <%= @vessel_count %></p>
+
+<%= link_to "Click here for this Companies Vessels", "/companies/#{@company.id}/vessels" %>
