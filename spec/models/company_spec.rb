@@ -10,5 +10,15 @@ RSpec.describe Company, type: :model do
         expect(Company.most_recent).to eq([pct, mmt])
       end
     end
+    
+    describe "#vessel_count" do
+      it "returns the amount of vessels per company" do
+        pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+        ke = pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+        gq = pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+
+        expect(pct.vessel_count).to eq(2)
+      end
+    end
   end
 end

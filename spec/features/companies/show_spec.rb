@@ -15,5 +15,15 @@ RSpec.describe "Company Index Page", type: :feature do
       expect(page).to have_no_content(@mmt.tripadvisor_rank)
       expect(page).to have_no_content(@mmt.offering_cruises)
     end
+
+    it "I see a count of the number of Vessels associated with this Company" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+
+      visit "/companies/#{@pct.id}"
+      
+      expect(page).to have_content("Amount of Vessels: #{@vessel_count}")
+    end
   end
 end

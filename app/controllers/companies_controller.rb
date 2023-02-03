@@ -5,5 +5,6 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @vessel_count = @company.vessel_count
   end
 end

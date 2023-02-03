@@ -4,4 +4,8 @@ class Company < ApplicationRecord
   def self.most_recent
     Company.order(:created_at)
   end
+
+  def vessel_count
+    self.vessels.count
+  end
 end
