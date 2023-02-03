@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Vessel.destroy_all
 Company.destroy_all
-
+binding.pry
 pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
 mmt = Company.create!(name: 'Major Marine Tours', tripadvisor_rank: 2, offering_cruises: false)
 
