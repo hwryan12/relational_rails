@@ -8,7 +8,7 @@ RSpec.describe "Vessel Index Page", type: :feature do
       @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
 
       visit "/vessels/#{@ke.id}"
-      # binding.pry
+  
       expect(page).to have_content(@ke.name)
       expect(page).to have_content(@ke.year_built)
       expect(page).to have_content(@ke.operational)
@@ -20,14 +20,29 @@ RSpec.describe "Vessel Index Page", type: :feature do
     it "I see a link at the top of the page that takes me to the Vessel Index" do
       @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
       @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
 
-      visit "/vessels"
+      visit "/vessels/#{@ke.id}"
       
       expect(page).to have_content("Click here for Vessels")
 
       click_on "Click here for Vessels"
 
       expect(current_path).to eq("/vessels")
+    end
+
+    it "I see a link at the top of the page that takes me to the Company Index" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+
+      visit "/vessels/#{@ke.id}"
+      
+      expect(page).to have_content("Click here for Companies")
+
+      click_on "Click here for Companies"
+
+      expect(current_path).to eq("/companies")
     end
   end
 end
