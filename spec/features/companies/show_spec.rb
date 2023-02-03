@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Company Index Page", type: :feature do
-  describe "As a visitor when I visit '/parents/:id'" do
-    it "I see the parent with that id including the parent's attributes" do
+  describe "As a visitor when I visit '/companies/:id'" do
+    it "I see the Company with that id including the Company's attributes" do
       @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
       @mmt = Company.create!(name: 'Major Marine Tours', tripadvisor_rank: 2, offering_cruises: false)
 
