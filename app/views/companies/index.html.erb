@@ -1,2 +1,7 @@
 <h1>Alaskan Glacier Tours</h1>
-
+<% @companies.each do |company| %>
+    <h2><%= company.name %></h2>
+    <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
+    <p>Currently Offering Tours: <%= company.offering_cruises %></p>
+<% end %>
+ 
