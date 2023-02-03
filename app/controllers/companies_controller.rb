@@ -1,9 +1,10 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.all
+    @companies = Company.most_recent
   end
 
   def show
     @company = Company.find(params[:id])
+    @vessel_count = @company.vessel_count
   end
 end

@@ -1,6 +1,10 @@
+<a href="/vessels">Click here for Vessels</a>
+<a href="/companies">Click here for Companies</a>
+
 <h1>Alaskan Glacier Tours</h1>
 <% @companies.each do |company| %>
     <h2><%= company.name %></h2>
+    <p>Created At: <%= company.created_at %> </p> 
     <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
     <p>Currently Offering Tours: <%= company.offering_cruises %></p>
 <% end %>

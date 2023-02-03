@@ -1,5 +1,11 @@
 class Company < ApplicationRecord
-  validates_presence_of :name
-  
   has_many :vessels
+
+  def self.most_recent
+    Company.order(:created_at)
+  end
+
+  def vessel_count
+    self.vessels.count
+  end
 end
