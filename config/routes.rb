@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get '/vessels/:id', to: 'vessels#show'
   
   get '/companies/:company_id/vessels', to: 'companies_vessels#index'
+  get '/companies/:company_id/vessels/new', to: 'companies_vessels#new'
+  post '/companies/:company_id/vessels', to: 'companies_vessels#create'
 end
