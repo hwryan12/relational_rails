@@ -12,9 +12,21 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    company = Company.create(name: params[:name], 
+    company = Company.create!({name: params[:name], 
     tripadvisor_rank: params[:tripadvisor_rank], 
-    offering_cruises: params[:offering_cruises])
+    offering_cruises: params[:offering_cruises]})
     redirect_to '/companies'
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:id])
+    @company.update({name: params[:name], 
+    tripadvisor_rank: params[:tripadvisor_rank], 
+    offering_cruises: params[:offering_cruises]})
+    redirect_to "/companies/#{@company.id}"
   end
 end
