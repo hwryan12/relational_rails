@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   get '/vessels', to: 'vessels#index'
   get '/vessels/:id', to: 'vessels#show'
+  get '/vessels/:id/edit', to: 'vessels#edit'
   
+  patch '/vessels/:id', to: 'vessels#update'
+
   get '/companies/:company_id/vessels', to: 'companies_vessels#index'
   get '/companies/:company_id/vessels/new', to: 'companies_vessels#new'
   post '/companies/:company_id/vessels', to: 'companies_vessels#create'

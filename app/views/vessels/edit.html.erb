@@ -1,0 +1,11 @@
+<h1>Edit Vessel Information</h1>
+
+<%= form_with url: "/vessels/#{@vessel.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :year_built %>
+  <%= form.text_field :year_built %>
+  <%= form.label :operational %>
+  <%= form.select :operational, ['true', 'false']%>
+  <%= form.submit 'Update' %>
+<% end %>
