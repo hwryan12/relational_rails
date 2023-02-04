@@ -23,7 +23,6 @@ RSpec.describe "Company Index Page", type: :feature do
     end
 
     it "I see a link at the top of the page that takes me to the Vessel Index" do
-
       visit "/companies"
       
       expect(page).to have_content("Click here for Vessels")
@@ -34,7 +33,6 @@ RSpec.describe "Company Index Page", type: :feature do
     end
 
     it "I see a link at the top of the page that takes me to the Company Index" do
-
       visit "/companies"
       
       expect(page).to have_content("Click here for Companies")
@@ -42,6 +40,16 @@ RSpec.describe "Company Index Page", type: :feature do
       click_on "Click here for Companies"
 
       expect(current_path).to eq("/companies")
+    end
+
+    it "I see a link to create a new Company record, 'New Company' that takes me to '/companies/new'" do
+      visit "/companies"
+      
+      expect(page).to have_content("New Companies")
+
+      click_on "New Companies"
+
+      expect(current_path).to eq("/companies/new")
     end
   end
 end
