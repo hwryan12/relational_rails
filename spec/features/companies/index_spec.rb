@@ -64,5 +64,21 @@ RSpec.describe "Company Index Page", type: :feature do
 
       expect(current_path).to eq("/companies/#{@pct.id}/edit")
     end
+
+    it "Next to every Company, I see a link to delete that Company, when I click the link
+      I am returned to the Parent Index Page where I no longer see that parent" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      
+      visit "/companies"
+      
+      expect(page).to have_content("Delete Company")
+
+      click_on "Delete Company"
+
+      expect(current_path).to eq("/companies")
+      expect(page).to have_no_content(@pct.name)
+      expect(page).to have_no_content(@pct.tripadvisor_rank)
+      expect(page).to have_no_content(@pct.offering_cruises)
+    end
   end
 end

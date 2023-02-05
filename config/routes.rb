@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/companies/:id', to: 'companies#show'
   post '/companies', to: 'companies#create'
   get '/companies/:id/edit', to: 'companies#edit'
+  delete '/companies', to: 'companies#destroy'
 
   patch '/companies/:id', to: 'companies#update'
   delete '/companies/:id', to: 'companies#destroy'
