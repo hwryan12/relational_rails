@@ -1,6 +1,6 @@
 class VesselsController < ApplicationController
   def index
-    @vessels = Vessel.all
+    @vessels = Vessel.where(operational: true)
   end
 
   def show
