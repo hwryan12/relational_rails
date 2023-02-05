@@ -3,6 +3,8 @@ class CompaniesVesselsController < ApplicationController
     @company = Company.find(params[:company_id])
     @vessels = if params[:sort_by] == 'name'
       @company.vessels.order(:name)
+    elsif params[:year_built]
+      @company.vessel_built_after(params[:year_built])
     else
       @company.vessels
     end

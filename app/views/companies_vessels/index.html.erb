@@ -11,7 +11,7 @@
 <%= link_to "Create Vessel", "/companies/#{@company.id}/vessels/new" %>
 <%= link_to "List Vessels Alphabetically", sort_by: "name" %>
 <%= form_with url: "/companies/#{@company.id}/vessels", method: :get, local: true do |form| %>
-  <%= form.label :number, "Year Built:" %>
-  <%= form.number_field :number %>
+  <%= form.label :year_built, "Year Built:" %>
+  <%= form.number_field :year_built %>
   <%= form.submit 'Only return records younger than this built year for vessels' %>
 <% end %>

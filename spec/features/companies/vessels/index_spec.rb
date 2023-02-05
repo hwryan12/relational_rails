@@ -92,6 +92,7 @@ RSpec.describe "Company Index Page", type: :feature do
 
       visit "/companies/#{@pct.id}/vessels"
       fill_in "Year Built:", with: "1990"
+      click_button 'Only return records younger than this built year for vessels'
       
       expect(page).to have_content("Year Built:")
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
