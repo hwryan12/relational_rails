@@ -1,5 +1,6 @@
 <a href="/vessels">Click here for Vessels</a>
 <a href="/companies">Click here for Companies</a>
+<a href="/companies/new">New Company</a>
 
 <h1>Alaskan Glacier Tours</h1>
 <% @companies.each do |company| %>
@@ -8,6 +9,6 @@
     <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
     <p>Currently Offering Tours: <%= company.offering_cruises %></p>
     <p><a href="/companies/<%= company.id %>/edit">Edit Company</a></p>
+    <p><%= link_to "Delete Company", "/companies/#{company.id}", method: :delete %></p>
+    </br>
 <% end %>
- 
- <a href="/companies/new">New Company</a>

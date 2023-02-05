@@ -83,5 +83,35 @@ RSpec.describe "Company Index Page", type: :feature do
       
       expect(current_path).to eq("/vessels/#{@ke.id}/edit")
     end
+
+    it "I see a form that allows me to input a number value and returns back 
+      to the current index page with only the records that meet that threshold shown" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+
+      visit "/companies/#{@pct.id}/vessels"
+      fill_in "Year Built:", with: "1990"
+      click_button 'Only return records younger than this built year for vessels'
+      
+      expect(page).to have_content("Year Built:")
+      expect(current_path).to eq("/companies/#{@pct.id}/vessels")
+    end
+    it "Next to every Vessel, I see a link to delete that Vessel, when I click the link
+      I am returned to the Vessel Index Page where I no longer see that Vessel" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+        
+      visit "/companies/#{@pct.id}/vessels"
+      
+      expect(page).to have_content("Delete Vessel")
+
+      click_on "Delete Vessel"
+
+      expect(current_path).to eq("/vessels")
+      expect(page).to have_no_content(@ke.name)
+      expect(page).to have_no_content(@ke.year_built)
+      expect(page).to have_no_content(@ke.operational)
+    end
   end
 end

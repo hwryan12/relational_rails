@@ -7,4 +7,6 @@
     <p>Year Built: <%= vessel.year_built %></p>
     <p>Currently Running Tours: <%= vessel.operational %></p>
     <p><a href="/vessels/<%= vessel.id %>/edit">Edit Vessel</a></p>
+    <p><%= link_to "Delete Vessel", "/vessels/#{vessel.id}", method: :delete %></p>
+    </br>
 <% end %>
