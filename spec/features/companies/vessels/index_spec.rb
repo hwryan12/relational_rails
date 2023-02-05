@@ -67,5 +67,21 @@ RSpec.describe "Company Index Page", type: :feature do
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
       expect(@gq.name).to appear_before(@ke.name)
     end
+
+    it "Next to every vessel, I see a link to edit that vessel's info, when I click the link
+      I should be taken to Vessels edit page where I can update its information" do
+      
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      
+      
+      visit "/companies/#{@pct.id}/vessels"
+      
+      expect(page).to have_content("Edit Vessel")
+      
+      click_on "Edit Vessel"
+      
+      expect(current_path).to eq("/vessels/#{@ke.id}/edit")
+    end
   end
 end
