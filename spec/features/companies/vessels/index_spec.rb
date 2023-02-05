@@ -44,5 +44,28 @@ RSpec.describe "Company Index Page", type: :feature do
 
       expect(current_path).to eq("/companies")
     end
+
+    it "I see a link to sort children in alphabetical order" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+      
+      visit "/companies/#{@pct.id}/vessels"
+
+      expect(page).to have_content("List Vessels Alphabetically")
+    end
+
+    it "When I click on the link I'm taken back to the Companies' Vessels Index Page 
+        where I see all of the Companies' Vessels in alphabetical order" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+      @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+      
+      visit "/companies/#{@pct.id}/vessels"
+      click_on "List Vessels Alphabetically"
+
+      expect(current_path).to eq("/companies/#{@pct.id}/vessels")
+      expect(@gq.name).to appear_before(@ke.name)
+    end
   end
 end

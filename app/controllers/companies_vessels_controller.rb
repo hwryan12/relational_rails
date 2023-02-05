@@ -1,7 +1,11 @@
 class CompaniesVesselsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
-    @vessels = @company.vessels  
+    @vessels = if params[:sort_by] == 'name'
+      @company.vessels.order(:name)
+    else
+      @company.vessels
+    end
   end
 
   def new
