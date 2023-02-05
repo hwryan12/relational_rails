@@ -2,10 +2,12 @@
 <a href="/companies">Click here for Companies</a>
 
 <% @vessels.each do |vessel| %>
-<h1> <%= vessel.name %> </h1> 
-<p>Year Built: <%= vessel.year_built %> </p> 
-<p>Currently Running Tours: <%= vessel.operational %> </p> 
-<%= link_to "Edit Vessel", "/vessels/#{vessel.id}/edit" %>
+  <h1> <%= vessel.name %> </h1> 
+  <p>Year Built: <%= vessel.year_built %> </p> 
+  <p>Currently Running Tours: <%= vessel.operational %> </p> 
+  <p><%= link_to "Edit Vessel", "/vessels/#{vessel.id}/edit" %></p> 
+  <p><%= link_to "Delete Vessel", "/vessels/#{vessel.id}", method: :delete %></p>
+  </br>
 <% end %>
 
 <%= link_to "Create Vessel", "/companies/#{@company.id}/vessels/new" %>

@@ -97,5 +97,21 @@ RSpec.describe "Company Index Page", type: :feature do
       expect(page).to have_content("Year Built:")
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
     end
+    it "Next to every Vessel, I see a link to delete that Vessel, when I click the link
+      I am returned to the Vessel Index Page where I no longer see that Vessel" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+        
+      visit "/companies/#{@pct.id}/vessels"
+      
+      expect(page).to have_content("Delete Vessel")
+
+      click_on "Delete Vessel"
+
+      expect(current_path).to eq("/vessels")
+      expect(page).to have_no_content(@ke.name)
+      expect(page).to have_no_content(@ke.year_built)
+      expect(page).to have_no_content(@ke.operational)
+    end
   end
 end
