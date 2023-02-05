@@ -29,4 +29,11 @@ class CompaniesController < ApplicationController
     offering_cruises: params[:offering_cruises]})
     redirect_to "/companies/#{@company.id}"
   end
+
+  def destroy
+    @company = Company.find(params[:id])
+    @company.vessels.destroy_all
+    @company.destroy
+    redirect_to "/companies"
+  end
 end

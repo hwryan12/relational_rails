@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/companies/:id/edit', to: 'companies#edit'
 
   patch '/companies/:id', to: 'companies#update'
+  delete '/companies/:id', to: 'companies#destroy'
 
   get '/vessels', to: 'vessels#index'
   get '/vessels/:id', to: 'vessels#show'
