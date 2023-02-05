@@ -7,5 +7,7 @@
     <p>Created At: <%= company.created_at %> </p> 
     <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
     <p>Currently Offering Tours: <%= company.offering_cruises %></p>
+    <p><a href="/companies/<%= company.id %>/edit">Edit Company</a></p>
 <% end %>
  
+ <a href="/companies/new">New Company</a>

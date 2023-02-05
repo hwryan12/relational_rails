@@ -5,4 +5,8 @@
 <h1> <%= vessel.name %> </h1> 
 <p>Year Built: <%= vessel.year_built %> </p> 
 <p>Currently Running Tours: <%= vessel.operational %> </p> 
+<%= link_to "Edit Vessel", "/vessels/#{vessel.id}/edit" %>
 <% end %>
+
+<%= link_to "Create Vessel", "/companies/#{@company.id}/vessels/new" %>
+<%= link_to "List Vessels Alphabetically", sort_by: "name" %>

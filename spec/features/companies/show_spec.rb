@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Company Index Page", type: :feature do
+RSpec.describe "Company Show Page", type: :feature do
   describe "As a visitor when I visit '/companies/:id'" do
     it "I see the Company with that id including the Company's attributes" do
       @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
@@ -23,7 +23,7 @@ RSpec.describe "Company Index Page", type: :feature do
 
       visit "/companies/#{@pct.id}"
       
-      expect(page).to have_content("Amount of Vessels: #{@vessel_count}")
+      expect(page).to have_content("Current Amount of Vessels: #{@vessel_count}")
     end
 
     it "I see a link at the top of the page that takes me to the Vessel Index" do

@@ -1,0 +1,11 @@
+<h1>New Company</h1>
+
+<%= form_with url: "/companies", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :tripadvisor_rank %>
+  <%= form.text_field :tripadvisor_rank %>
+  <%= form.label :offering_cruises %>
+  <%= form.select :offering_cruises, ['true', 'false']%>
+  <%= form.submit 'Create Company' %>
+<% end %>
