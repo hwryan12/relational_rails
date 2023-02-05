@@ -45,11 +45,24 @@ RSpec.describe "Company Index Page", type: :feature do
     it "I see a link to create a new Company record, 'New Company' that takes me to '/companies/new'" do
       visit "/companies"
       
-      expect(page).to have_content("New Companies")
+      expect(page).to have_content("New Company")
 
-      click_on "New Companies"
+      click_on "New Company"
 
       expect(current_path).to eq("/companies/new")
+    end
+    
+    it "Next to every Company, I see a link to edit that Companies' info When I click the link
+      I should be taken to that Companies' edit page where I can update its information" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      
+      visit "/companies"
+      
+      expect(page).to have_content("Edit Company")
+
+      click_on "Edit Company"
+
+      expect(current_path).to eq("/companies/#{@pct.id}/edit")
     end
   end
 end
