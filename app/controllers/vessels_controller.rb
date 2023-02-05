@@ -18,4 +18,10 @@ class VesselsController < ApplicationController
     operational: params[:operational]})
     redirect_to "/vessels/#{@vessel.id}"
   end
+
+  def destroy
+    @vessel = Vessel.find(params[:id])
+    @vessel.destroy
+    redirect_to '/vessels'
+  end
 end

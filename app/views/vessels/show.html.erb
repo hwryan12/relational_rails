@@ -6,3 +6,4 @@
 <p>Currently Running Tours: <%= @vessel.operational %></p>
 
 <%= link_to "Update Vessel", "/vessels/#{@vessel.id}/edit" %>
+<%= link_to "DELETE VESSEL", "/vessels/#{@vessel.id}", method: :delete %>

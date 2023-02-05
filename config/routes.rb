@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/vessels/:id/edit', to: 'vessels#edit'
   
   patch '/vessels/:id', to: 'vessels#update'
+  delete '/vessels/:id', to: 'vessels#destroy'
 
   get '/companies/:company_id/vessels', to: 'companies_vessels#index'
   get '/companies/:company_id/vessels/new', to: 'companies_vessels#new'
