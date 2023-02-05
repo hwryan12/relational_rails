@@ -8,4 +8,8 @@ class Company < ApplicationRecord
   def vessel_count
     self.vessels.count
   end
+
+  def vessel_built_after(year)
+    self.vessels.where("year_built > #{year}")
+  end
 end
