@@ -58,9 +58,9 @@ RSpec.describe "Vessel Index Page", type: :feature do
       
       visit "/vessels"
       
-      expect(page).to have_content("Edit Vessel")
+      expect(page).to have_content("Edit #{@ke.name}")
       
-      click_on "Edit Vessel"
+      click_on "Edit #{@ke.name}"
       
       expect(current_path).to eq("/vessels/#{@ke.id}/edit")
     end
@@ -72,9 +72,9 @@ RSpec.describe "Vessel Index Page", type: :feature do
         
       visit "/vessels"
       
-      expect(page).to have_content("Delete Vessel")
+      expect(page).to have_content("Delete #{@ke.name}")
 
-      click_on "Delete Vessel"
+      click_on "Delete #{@ke.name}"
 
       expect(current_path).to eq("/vessels")
       expect(page).to have_no_content(@ke.name)
