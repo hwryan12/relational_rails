@@ -11,7 +11,11 @@
 <% end %>
 
 <%= link_to "Create Vessel", "/companies/#{@company.id}/vessels/new" %>
+</br>
+</br>
 <%= link_to "List Vessels Alphabetically", sort_by: "name" %>
+</br>
+</br>
 <%= form_with url: "/companies/#{@company.id}/vessels", method: :get, local: true do |form| %>
   <%= form.label :year_built, "Year Built:" %>
   <%= form.number_field :year_built %>
