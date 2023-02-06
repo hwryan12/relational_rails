@@ -8,9 +8,9 @@ RSpec.describe "Vessel Edit Page", type: :feature do
         @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
 
         visit "/vessels/#{@ke.id}"
-        expect(page).to have_content("Update Vessel")
+        expect(page).to have_button("Update Vessel")
 
-        click_on "Update Vessel"
+        click_button "Update Vessel"
         expect(current_path).to eq("/vessels/#{@ke.id}/edit")
       end
 

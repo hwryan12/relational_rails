@@ -45,9 +45,9 @@ RSpec.describe "Company Index Page", type: :feature do
     it "I see a link to create a new Company record, 'New Company' that takes me to '/companies/new'" do
       visit "/companies"
       
-      expect(page).to have_content("New Company")
+      expect(page).to have_button("New Company")
 
-      click_on "New Company"
+      click_button "New Company"
 
       expect(current_path).to eq("/companies/new")
     end
