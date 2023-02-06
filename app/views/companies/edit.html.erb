@@ -3,10 +3,17 @@
 <%= form_with url: "/companies/#{@company.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
+  </br>
+  </br>
   <%= form.label :tripadvisor_rank %>
   <%= form.text_field :tripadvisor_rank %>
+  </br>
+  </br>
   <%= form.label :offering_cruises %>
   <%= form.select :offering_cruises, ['true', 'false']%>
+  </br>
+  </br>
+  </br>
   <%= form.submit 'Update' %>
 <% end %>
 

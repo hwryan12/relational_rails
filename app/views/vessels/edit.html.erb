@@ -3,9 +3,16 @@
 <%= form_with url: "/vessels/#{@vessel.id}", method: :patch, local: true do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
+  </br>
+  </br>
   <%= form.label :year_built %>
   <%= form.text_field :year_built %>
+  </br>
+  </br>
   <%= form.label :operational %>
   <%= form.select :operational, ['true', 'false']%>
+  </br>
+  </br>
+  </br>
   <%= form.submit 'Update' %>
 <% end %>
