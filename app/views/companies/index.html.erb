@@ -6,7 +6,8 @@
     <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
     <p>Currently Offering Tours: <%= company.offering_cruises %></p>
     <p><%= button_to "Edit #{company.name}", "/companies/#{company.id}/edit", method: :get %></p>
-    <p><%= button_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %></p>
+    <p><%= button_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete, data:
+        { confirm: "Are you sure?" } %></p>
     </br>
 <% end %>
 </br>
