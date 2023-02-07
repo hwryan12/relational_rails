@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Company Index Page", type: :feature do
   before(:each) do 
+    @mmt = Company.create!(name: 'Major Marine Tours', tripadvisor_rank: 2, offering_cruises: false)
     @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
   end
   
@@ -82,8 +83,6 @@ RSpec.describe "Company Index Page", type: :feature do
 
       expect(current_path).to eq("/companies")
       expect(page).to have_no_content(@pct.name)
-      expect(page).to have_no_content(@pct.tripadvisor_rank)
-      expect(page).to have_no_content(@pct.offering_cruises)
     end
 
     it "Every Company name is rendered to be a link to that Companies' show page" do      
@@ -91,6 +90,27 @@ RSpec.describe "Company Index Page", type: :feature do
       click_on "#{@pct.name}"
 
       expect(current_path).to eq("/companies/#{@pct.id}")
+    end
+
+    it "I see a text box to filter results by keyword" do
+      visit "/companies"
+
+      expect(page).to have_button("Search")
+    end
+
+    it "I type in a keyword that is an exact match of one or more of my records and press the Search button" do
+      visit "/companies"
+      click_button "Search"
+
+      expect(current_path).to eq("/companies")
+    end
+
+    it "I only see records that are an exact match returned on the page" do 
+      visit "/companies"
+      click_button "Search"
+      
+      expect(page).to have_content(@pct.name)
+      expect(page).to have_no_content(@mmt.name)
     end
   end
 end

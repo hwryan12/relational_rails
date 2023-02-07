@@ -12,4 +12,8 @@ class Company < ApplicationRecord
   def vessel_length(length)
     self.vessels.where("length > #{length}")
   end
+
+  def self.search(query)
+    where(name: query)
+  end
 end

@@ -6,4 +6,5 @@
 </br>
 <%= button_to "Update #{@vessel.name}", "/vessels/#{@vessel.id}/edit", method: :get %>
 </br>
-<%= button_to "Delete #{@vessel.name}", "/vessels/#{@vessel.id}", method: :delete %>
+<%= button_to "Delete #{@vessel.name}", "/vessels/#{@vessel.id}", method: :delete, data:
+  { confirm: "Are you sure?" }%>
