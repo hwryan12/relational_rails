@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  has_many :vessels
+  has_many :vessels, dependent: :destroy
 
   def self.most_recent
     Company.order(:created_at)
