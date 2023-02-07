@@ -81,5 +81,15 @@ RSpec.describe "Vessel Index Page", type: :feature do
       expect(page).to have_no_content(@ke.year_built)
       expect(page).to have_no_content(@ke.operational)
     end
+
+    it "Every Vessel name is rendered to be a link to that Vessel's show page" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
+
+      visit "/vessels"
+      click_on "#{@ke.name}"
+
+      expect(current_path).to eq("/vessels/#{@ke.id}")
+    end
   end
 end
