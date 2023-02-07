@@ -1,10 +1,12 @@
 
 <% @vessels.each do |vessel| %>
-  <h1> <%= vessel.name %> </h1> 
+  <h1> <%= vessel.name %> </h1>
+  <p>Length (feet): <%= vessel.length %> </p> 
   <p>Year Built: <%= vessel.year_built %> </p> 
   <p>Currently Running Tours: <%= vessel.operational %> </p> 
   <p><%= button_to "Edit #{vessel.name}", "/vessels/#{vessel.id}/edit", method: :get %></p> 
-  <p><%= button_to "Delete #{vessel.name}", "/vessels/#{vessel.id}", method: :delete %></p>
+  <p><%= button_to "Delete #{vessel.name}", "/vessels/#{vessel.id}", method: :delete, data:
+        { confirm: "Are you sure?" } %></p>
   </br>
 <% end %>
 </br>
@@ -14,7 +16,7 @@
 </br>
 </br>
 <%= form_with url: "/companies/#{@company.id}/vessels", method: :get, local: true do |form| %>
-  <%= form.label :year_built, "Year Built:" %>
-  <%= form.number_field :year_built %>
-  <%= form.submit 'Only return records younger than this built year for vessels' %>
+  <%= form.label :length, "Length (feet):" %>
+  <%= form.number_field :length %>
+  <%= form.submit "Only Return Vessels More than this Length" %>
 <% end %>

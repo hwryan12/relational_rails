@@ -13,9 +13,7 @@ class VesselsController < ApplicationController
 
   def update
     @vessel = Vessel.find(params[:id])
-    @vessel.update({name: params[:name], 
-    year_built: params[:year_built], 
-    operational: params[:operational]})
+    @vessel.update(vessel_params)
     redirect_to "/vessels/#{@vessel.id}"
   end
 
@@ -24,4 +22,9 @@ class VesselsController < ApplicationController
     @vessel.destroy
     redirect_to '/vessels'
   end
+
+  private
+    def vessel_params
+      params.permit(:name, :length, :year_built, :operational)
+    end
 end

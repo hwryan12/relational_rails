@@ -9,4 +9,5 @@
 </br>
 <%= button_to "Update #{@company.name}", "/companies/#{@company.id}/edit", method: :get %>
 </br>
-<%= button_to "Delete #{@company.name}", "/companies/#{@company.id}", method: :delete %>
+<%= button_to "Delete #{@company.name}", "/companies/#{@company.id}", method: :delete, data:
+  { confirm: "Are you sure?" } %>

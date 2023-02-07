@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2023_02_03_004056) do
 
   create_table "vessels", force: :cascade do |t|
     t.string "name"
+    t.integer "length"
     t.integer "year_built"
     t.boolean "operational"
     t.datetime "created_at", null: false

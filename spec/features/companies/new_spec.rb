@@ -6,7 +6,10 @@ RSpec.describe "Company New Page", type: :feature do
       visit "/companies/new"
 
       expect(page).to have_content("New Company")
+    end
 
+    it "When I fill out that form, I am returned to Company Index Page" do
+      visit "/companies/new"
       fill_in 'Name', with: 'Allen Marine Tours'
       fill_in 'tripadvisor_rank', with: '3'
       have_select 'offering_cruises', selected: 'true'

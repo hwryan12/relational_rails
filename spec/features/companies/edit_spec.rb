@@ -20,21 +20,28 @@ RSpec.describe "Company Show Page", type: :feature do
       expect(current_path).to eq("/companies/#{@pct.id}/edit")
     end
 
-    describe "When update form is filled and submitted a `PATCH` request is sent to '/companies/:id'" do
-      it "The companies' info is updated,and I am redirected to the Companies' Show page 
-        where I see the Companies' updated info" do
-        visit "/companies/#{@pct.id}"
-        click_on "Update #{@pct.name}"
-        fill_in 'Name', with: 'Allen Marine Tours'
-        fill_in 'tripadvisor_rank', with: '3'
-        have_select 'offering_cruises', selected: 'true'
-        click_on "Update"
+    it "When update form is filled and submitted The companies' info is updated I am redirected to the Companies' Show page" do
+      visit "/companies/#{@pct.id}"
+      click_on "Update #{@pct.name}"
+      fill_in 'Name', with: 'Allen Marine Tours'
+      fill_in 'tripadvisor_rank', with: '3'
+      have_select 'offering_cruises', selected: 'true'
+      click_on "Update"
 
-        expect(current_path).to eq("/companies/#{@pct.id}")
-        expect(page).to have_content("Allen Marine Tours")
-        expect(page).to have_content("3")
-        expect(page).to have_content("true")
-      end
+      expect(current_path).to eq("/companies/#{@pct.id}")
+    end
+
+    it "Where I see the Companies' updated info" do
+      visit "/companies/#{@pct.id}"
+      click_on "Update #{@pct.name}"
+      fill_in 'Name', with: 'Allen Marine Tours'
+      fill_in 'tripadvisor_rank', with: '3'
+      have_select 'offering_cruises', selected: 'true'
+      click_on "Update"
+
+      expect(page).to have_content("Allen Marine Tours")
+      expect(page).to have_content("3")
+      expect(page).to have_content("true")
     end
   end
 end

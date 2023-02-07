@@ -3,8 +3,8 @@ class CompaniesVesselsController < ApplicationController
     @company = Company.find(params[:company_id])
     @vessels = if params[:sort_by] == 'name'
       @company.vessels.order(:name)
-    elsif params[:year_built]
-      @company.vessel_built_after(params[:year_built])
+    elsif params[:length]
+      @company.vessel_length(params[:length])
     else
       @company.vessels
     end
@@ -16,9 +16,12 @@ class CompaniesVesselsController < ApplicationController
 
   def create
     @company = Company.find(params[:company_id]) 
-    @company.vessels.create!({name: params[:name], 
-    year_built: params[:year_built], 
-    operational: params[:operational]})
+    @company.vessels.create!(vessel_params)
     redirect_to "/companies/#{@company.id}/vessels"
   end
+
+  private
+    def vessel_params
+      params.permit(:name, :length, :year_built, :operational)
+    end
 end
