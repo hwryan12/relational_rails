@@ -1,6 +1,11 @@
 class CompaniesController < ApplicationController
   def index
-    @companies = Company.most_recent
+    @companies = 
+    if params[:search]
+      Company.search(params[:search])
+    else
+      Company.most_recent
+    end
   end
 
   def show

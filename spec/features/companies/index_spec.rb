@@ -107,6 +107,7 @@ RSpec.describe "Company Index Page", type: :feature do
 
     it "I only see records that are an exact match returned on the page" do 
       visit "/companies"
+      fill_in 'Search', with: 'Phillips Cruises and Tours'
       click_button "Search"
       
       expect(page).to have_content(@pct.name)

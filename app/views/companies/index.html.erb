@@ -14,7 +14,8 @@
 <%= button_to "New Company", "/companies/new", method: :get %>
 </br>
 <h4> Search Name: </h4>
-    <%= form_tag("/companies", method: :get) do %>
-        <%= text_field_tag(:search, params[:search]) %>
-        <%= submit_tag ("Search") %>
+    <%= form_with method: :get, local: true do |form|%>
+        <%= form.label :search %>
+        <%= form.text_field :search %>
+        <%= form.submit 'Search' %>
     <% end  %>
