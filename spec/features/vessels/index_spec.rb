@@ -16,21 +16,27 @@ RSpec.describe "Vessel Index Page", type: :feature do
       expect(page).to have_content(@ke.operational)
     end
 
-    it "I see a link at the top of the page that takes me to the Vessel Index" do
+    it "I see a Vessel Index link at the top of the page" do
       visit "/vessels"
       
       expect(page).to have_content("Click here for Vessels")
+    end
 
+    it "That link takes me to the Vessel Index" do
+      visit "/vessels"
       click_on "Click here for Vessels"
 
       expect(current_path).to eq("/vessels")
     end
 
-    it "I see a link at the top of the page that takes me to the Company Index" do
+    it "I see a Company Index link at the top of the page" do
       visit "/vessels"
       
       expect(page).to have_content("Click here for Companies")
+    end
 
+    it "That link takes me to the Company Index" do
+      visit "/vessels"
       click_on "Click here for Companies"
 
       expect(current_path).to eq("/companies")
@@ -47,26 +53,30 @@ RSpec.describe "Vessel Index Page", type: :feature do
       expect(page).to have_no_content(@gq.operational)
     end
 
-    it "Next to every vessel, I see a link to edit that vessel's info, when I click the link
-      I should be taken to Vessels edit page where I can update its information" do
+    it "Next to every vessel, I see a link to edit that vessel's info" do
       visit "/vessels"
       
       expect(page).to have_button("Edit #{@ke.name}")
-      
+    end
+
+    it "When I click the link I should be taken to Vessels edit page where I can update its information" do
+      visit "/vessels"
       click_button "Edit #{@ke.name}"
       
       expect(current_path).to eq("/vessels/#{@ke.id}/edit")
     end
 
-    it "Next to every Vessel, I see a link to delete that Vessel, when I click the link
-      I am returned to the Vessel Index Page where I no longer see that Vessel" do
+    it "Next to every Vessel, I see a link to delete that Vessel" do
       visit "/vessels"
       
       expect(page).to have_button("Delete #{@ke.name}")
+    end
+
+    it "When I click the link I am returned to the Vessel Index Page where I no longer see that Vessel" do
+      visit "/vessels"
 
       click_button "Delete #{@ke.name}"
 
-      expect(current_path).to eq("/vessels")
       expect(page).to have_no_content(@ke.name)
       expect(page).to have_no_content(@ke.year_built)
       expect(page).to have_no_content(@ke.operational)

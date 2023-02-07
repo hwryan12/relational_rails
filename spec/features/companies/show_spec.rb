@@ -32,32 +32,40 @@ RSpec.describe "Company Show Page", type: :feature do
       expect(current_path).to eq("/vessels")
     end
 
-    it "I see a link at the top of the page that takes me to the Company Index" do   
+    it "I see a Vessel Index link at the top of the page" do 
       visit "/companies/#{@pct.id}"
       
-      expect(page).to have_content("Click here for Companies")
+      expect(page).to have_content("Click here for Vessels")
+    end
 
+    it "That link takes me to the Company Index" do   
+      visit "/companies/#{@pct.id}"
       click_on "Click here for Companies"
 
       expect(current_path).to eq("/companies")
     end
 
-    it "I see a link to take me to that Companies' Vessels page" do 
+    it "I see a Companies' Vessels page link " do 
       visit "/companies/#{@pct.id}"
       
       expect(page).to have_button("Click Here All #{@pct.name}'s Vessels")
+    end
 
+    it "That link takes me to that Companies' Vessels page" do 
+      visit "/companies/#{@pct.id}"
       click_button "Click Here All #{@pct.name}'s Vessels"
 
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
     end
 
-    it "I see a link to delete the Company, when I click the link 
-      a 'DELETE' request is sent to '/companies/:id'" do
+    it "I see a link to delete the Company" do
       visit "/companies/#{@pct.id}"
       
       expect(page).to have_button("Delete #{@pct.name}")
+    end
 
+    it "When I click the link a 'DELETE' request is sent to '/companies/:id'" do
+      visit "/companies/#{@pct.id}"
       click_button "Delete #{@pct.name}"
 
       expect(current_path).to eq("/companies")
