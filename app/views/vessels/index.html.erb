@@ -2,6 +2,7 @@
 <h1>Alaskan Glacier Tours Fleet</h1>
 <% @vessels.each do |vessel| %>
     <h2><%= link_to "#{vessel.name}", "/vessels/#{vessel.id}" %></h2>
+    <p>Length (feet): <%= vessel.length %> </p> 
     <p>Year Built: <%= vessel.year_built %></p>
     <p>Currently Running Tours: <%= vessel.operational %></p>
     <p><%= button_to "Edit #{vessel.name}", "/vessels/#{vessel.id}/edit", method: :get %></p>

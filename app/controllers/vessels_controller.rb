@@ -25,6 +25,6 @@ class VesselsController < ApplicationController
 
   private
     def vessel_params
-      params.permit(:name, :year_built, :operational)
+      params.permit(:name, :length, :year_built, :operational)
     end
 end

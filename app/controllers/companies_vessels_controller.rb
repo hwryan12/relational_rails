@@ -17,6 +17,7 @@ class CompaniesVesselsController < ApplicationController
   def create
     @company = Company.find(params[:company_id]) 
     @company.vessels.create!({name: params[:name], 
+    length: params[:length],
     year_built: params[:year_built], 
     operational: params[:operational]})
     redirect_to "/companies/#{@company.id}/vessels"

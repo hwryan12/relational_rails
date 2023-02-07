@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Company Index Page", type: :feature do
   before(:each) do 
     @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
-    @ke = @pct.vessels.create!(name: 'Klondike Express', year_built: 1999, operational: true)
-    @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
+    @ke = @pct.vessels.create!(name: 'Klondike Express', length: 137, year_built: 1999, operational: true)
+    @gq = @pct.vessels.create!(name: 'Glaicer Quest', length: 97, year_built: 1987, operational: false)
   end
 
   describe "As a visitor when I visit '/companies/:id/vessels'" do
@@ -26,7 +26,8 @@ RSpec.describe "Company Index Page", type: :feature do
       visit "/companies/#{@pct.id}/vessels"
       click_on "Create Vessel"
 
-      fill_in 'Name', with: 'Bravest'
+      fill_in 'name', with: 'Bravest'
+      fill_in 'length', with: '130'
       fill_in 'year_built', with: '1996'
       have_select 'operational', selected: 'true'
       click_on 'Create'      
