@@ -12,9 +12,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    company = Company.create!({name: params[:name], 
-    tripadvisor_rank: params[:tripadvisor_rank], 
-    offering_cruises: params[:offering_cruises]})
+    company = Company.create!(company_params)
     redirect_to '/companies'
   end
 
@@ -24,9 +22,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    @company.update({name: params[:name], 
-    tripadvisor_rank: params[:tripadvisor_rank], 
-    offering_cruises: params[:offering_cruises]})
+    @company.update(company_params)
     redirect_to "/companies/#{@company.id}"
   end
 
@@ -36,4 +32,9 @@ class CompaniesController < ApplicationController
     @company.destroy
     redirect_to "/companies"
   end
+
+  private
+    def company_params
+      params.permit(:name, :tripadvisor_rank, :offering_cruises)
+    end
 end
