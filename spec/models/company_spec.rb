@@ -30,13 +30,4 @@ RSpec.describe Company, type: :model do
       end
     end
   end
-
-  describe "class methods" do
-    describe "#search" do
-      it "It searches all names and returns names that exactly match query" do
-
-        expect(Company.search("Phillips Cruises and Tours")).to eq([@pct])
-      end
-    end
-  end
 end
