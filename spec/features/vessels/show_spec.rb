@@ -53,9 +53,9 @@ RSpec.describe "Vessel Index Page", type: :feature do
 
       visit "/vessels/#{@ke.id}"
       
-      expect(page).to have_button("DELETE VESSEL")
+      expect(page).to have_button("DELETE #{@ke.name}")
 
-      click_button "DELETE VESSEL"
+      click_button "DELETE #{@ke.name}"
 
       expect(current_path).to eq("/vessels")
     end
@@ -66,7 +66,7 @@ RSpec.describe "Vessel Index Page", type: :feature do
       @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
 
       visit "/vessels/#{@ke.id}"
-      click_on "DELETE VESSEL"
+      click_on "DELETE #{@ke.name}"
 
       expect(page).to have_no_content(@ke.name)
       expect(page).to have_no_content(@ke.year_built)

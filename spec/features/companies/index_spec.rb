@@ -80,5 +80,14 @@ RSpec.describe "Company Index Page", type: :feature do
       expect(page).to have_no_content(@pct.tripadvisor_rank)
       expect(page).to have_no_content(@pct.offering_cruises)
     end
+
+    it "Every Company name is rendered to be a link to that Companies' show page" do
+      @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
+      
+      visit "/companies"
+      click_on "#{@pct.name}"
+
+      expect(current_path).to eq("/companies/#{@pct.id}")
+    end
   end
 end
