@@ -15,7 +15,7 @@
 </br>
 </br>
 <%= form_with url: "/companies/#{@company.id}/vessels", method: :get, local: true do |form| %>
-  <%= form.label :year_built, "Year Built:" %>
-  <%= form.number_field :year_built %>
-  <%= form.submit 'Only return records younger than this built year for vessels' %>
+  <%= form.label :length, "Length (feet):" %>
+  <%= form.number_field :length %>
+  <%= form.submit "Only Return Vessels More than this Length" %>
 <% end %>

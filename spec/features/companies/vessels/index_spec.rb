@@ -78,14 +78,13 @@ RSpec.describe "Company Index Page", type: :feature do
     it "I see a form that allows me to input a number value" do
       visit "/companies/#{@pct.id}/vessels"
 
-      expect(page).to have_content("Year Built:")
+      expect(page).to have_content("Length (feet):")
     end
 
-    it "I see a form that allows me to input a number value and returns back 
-      to the current index page with only the records that meet that threshold shown" do
+    it "That form returns back to the current index page with only the records that meet that threshold shown" do
       visit "/companies/#{@pct.id}/vessels"
-      fill_in "Year Built:", with: "1990"
-      click_button 'Only return records younger than this built year for vessels'
+      fill_in "Length (feet):", with: "100"
+      click_button "Only Return Vessels More than this Length"
       
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
     end
