@@ -9,7 +9,7 @@ RSpec.describe "Company Index Page", type: :feature do
 
       visit "/companies/#{@pct.id}/vessels"
 
-      expect(page).to have_content("Create Vessel")
+      expect(page).to have_button("Create Vessel")
     end
 
     it "When I click the link, I am taken to '/companies/:company_id/vessesls/new'" do 
@@ -18,7 +18,7 @@ RSpec.describe "Company Index Page", type: :feature do
       @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
       
       visit "/companies/#{@pct.id}/vessels"
-      click_on "Create Vessel"
+      click_button "Create Vessel"
 
       expect(current_path).to eq("/companies/#{@pct.id}/vessels/new")
     end
