@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: redirect('/companies')
   get '/companies', to: 'companies#index'
   get '/companies/new', to: 'companies#new'
   get '/companies/:id', to: 'companies#show'

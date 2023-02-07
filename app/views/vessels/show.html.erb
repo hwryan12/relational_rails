@@ -1,10 +1,8 @@
-<a href="/vessels">Click here for Vessels</a>
-<a href="/companies">Click here for Companies</a>
 
 <h1><%= @vessel.name %></h1>
 <p>Year Built: <%= @vessel.year_built %></p>
 <p>Currently Running Tours: <%= @vessel.operational %></p>
 </br>
-<%= link_to "Update Vessel", "/vessels/#{@vessel.id}/edit" %>
+<%= button_to "Update #{@vessel.name}", "/vessels/#{@vessel.id}/edit", method: :get %>
 </br>
-<%= link_to "DELETE VESSEL", "/vessels/#{@vessel.id}", method: :delete %>
+<%= button_to "Delete #{@vessel.name}", "/vessels/#{@vessel.id}", method: :delete %>

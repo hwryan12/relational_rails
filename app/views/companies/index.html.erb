@@ -1,14 +1,13 @@
-<a href="/vessels">Click here for Vessels</a>
-<a href="/companies">Click here for Companies</a>
-<a href="/companies/new">New Company</a>
 
 <h1>Alaskan Glacier Tours</h1>
 <% @companies.each do |company| %>
-    <h2><%= company.name %></h2>
+    <h2><%= link_to "#{company.name}", "/companies/#{company.id}" %></h2>
     <p>Created At: <%= company.created_at %> </p> 
     <p>TripAdvisor Rank: <%= company.tripadvisor_rank %></p>
     <p>Currently Offering Tours: <%= company.offering_cruises %></p>
-    <p><a href="/companies/<%= company.id %>/edit">Edit Company</a></p>
-    <p><%= link_to "Delete Company", "/companies/#{company.id}", method: :delete %></p>
+    <p><%= button_to "Edit #{company.name}", "/companies/#{company.id}/edit", method: :get %></p>
+    <p><%= button_to "Delete #{company.name}", "/companies/#{company.id}", method: :delete %></p>
     </br>
 <% end %>
+</br>
+<%= button_to "New Company", "/companies/new", method: :get %>
