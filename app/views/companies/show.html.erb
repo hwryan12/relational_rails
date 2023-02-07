@@ -5,8 +5,8 @@
 <p>Currently Offering Tours: <%= @company.offering_cruises %></p>
 <p>Current Amount of Vessels: <%= @vessel_count %></p>
 
-<%= link_to "Click here for this Companies Vessels", "/companies/#{@company.id}/vessels" %>
+<%= button_to "Click Here All #{@company.name}'s Vessels", "/companies/#{@company.id}/vessels", method: :get %>
 </br>
-<%= link_to "Update #{@company.name}", "/companies/#{@company.id}/edit" %>
+<%= button_to "Update #{@company.name}", "/companies/#{@company.id}/edit", method: :get %>
 </br>
-<%= link_to "DELETE", "/companies/#{@company.id}", method: :delete %>
+<%= button_to "Delete #{@company.name}", "/companies/#{@company.id}", method: :delete %>

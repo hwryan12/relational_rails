@@ -6,7 +6,7 @@ RSpec.describe "Company Show Page", type: :feature do
       @pct = Company.create!(name: 'Phillips Cruises and Tours', tripadvisor_rank: 1, offering_cruises: true)
 
       visit "/companies/#{@pct.id}"
-      expect(page).to have_content("Update #{@pct.name}")
+      expect(page).to have_button("Update #{@pct.name}")
     end
 
     it "When I click the link 'Update Phillips Cruises and Tours', I am taken to '/parents/:id/edit' 

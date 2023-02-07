@@ -58,9 +58,9 @@ RSpec.describe "Company Index Page", type: :feature do
       
       visit "/companies"
       
-      expect(page).to have_content("Edit #{@pct.name}")
+      expect(page).to have_button("Edit #{@pct.name}")
 
-      click_on "Edit #{@pct.name}"
+      click_button "Edit #{@pct.name}"
 
       expect(current_path).to eq("/companies/#{@pct.id}/edit")
     end
@@ -71,9 +71,9 @@ RSpec.describe "Company Index Page", type: :feature do
       
       visit "/companies"
       
-      expect(page).to have_content("Delete #{@pct.name}")
+      expect(page).to have_button("Delete #{@pct.name}")
 
-      click_on "Delete #{@pct.name}"
+      click_button "Delete #{@pct.name}"
 
       expect(current_path).to eq("/companies")
       expect(page).to have_no_content(@pct.name)

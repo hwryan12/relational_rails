@@ -61,9 +61,9 @@ RSpec.describe "Company Show Page", type: :feature do
       
       visit "/companies/#{@pct.id}"
       
-      expect(page).to have_content("Click here for this Companies Vessels")
+      expect(page).to have_button("Click Here All #{@pct.name}'s Vessels")
 
-      click_on "Click here for this Companies Vessels"
+      click_button "Click Here All #{@pct.name}'s Vessels"
 
       expect(current_path).to eq("/companies/#{@pct.id}/vessels")
     end
@@ -76,9 +76,9 @@ RSpec.describe "Company Show Page", type: :feature do
       
       visit "/companies/#{@pct.id}"
       
-      expect(page).to have_content("DELETE")
+      expect(page).to have_button("Delete #{@pct.name}")
 
-      click_on "DELETE"
+      click_button "Delete #{@pct.name}"
 
       expect(current_path).to eq("/companies")
     end
@@ -90,7 +90,7 @@ RSpec.describe "Company Show Page", type: :feature do
       @gq = @pct.vessels.create!(name: 'Glaicer Quest', year_built: 1987, operational: false)
       
       visit "/companies/#{@pct.id}"
-      click_on "DELETE"
+      click_button "Delete #{@pct.name}"
 
       expect(page).to have_no_content(@pct.name)
       expect(page).to have_no_content(@pct.tripadvisor_rank)
